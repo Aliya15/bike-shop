@@ -1,5 +1,5 @@
 @if (product()) {
-  <section (click)="openPLP()" class="product-tile">
+  <section tabindex="0" class="product-tile" (keydown.enter)="openPLP()" (click)="openPLP()">
     <img [ngSrc]="product()?.thumb || 'assets/images/default-image.png'"
          [alt]="product()?.title"
          class="product-tile-image"

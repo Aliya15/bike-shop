@@ -6,7 +6,7 @@ export interface BikeItemResult {
   bike: BikeDetails;
 }
 
-export interface Bike extends Record<string, any> {
+export interface Bike extends Record<string, unknown> {
   date_stolen: 1745654400;
   description: string;
   frame_colors: string[];

@@ -7,7 +7,7 @@ import {Bike} from '../models/product.model';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(bikeList: Bike[], query: string | undefined | null, param: string = 'id'): Bike[] {
+  transform(bikeList: Bike[], query: string | undefined | null, param = 'id'): Bike[] {
     if (!bikeList.length || !query) {
       return bikeList;
     }

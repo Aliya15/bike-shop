@@ -1,0 +1,10 @@
+@use "colors";
+
+:host {
+  justify-self: flex-end;
+}
+
+footer {
+  padding-block: 20px;
+  background-color: colors.$color-blue;
+}

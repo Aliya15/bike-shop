@@ -1,0 +1,55 @@
+@use 'colors';
+@use "breakpoints";
+@use 'text-mixins' as mixins;
+
+:host {
+  height: 100%;
+}
+
+.product-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 15px;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  }
+
+  .product-tile-image {
+    height: 150px;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  .product-tile-description {
+    @include mixins.text-ellipsis($lines: 2);
+
+    color: colors.$color-grey;
+
+    @media only screen and (min-width: breakpoints.$layout-breakpoint-desktop) {
+      margin-top: auto;
+    }
+  }
+
+  .product-tile-title {
+    @include mixins.text-ellipsis($lines: 2);
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  .product-tile-location {
+    margin-top: auto;
+    align-self: flex-end;
+    font-style: italic;
+  }
+}

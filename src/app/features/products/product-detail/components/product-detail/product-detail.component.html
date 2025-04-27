@@ -1,0 +1,36 @@
+@if (currentBikeData$ | async; as product) {
+  <div class="product-wrapper">
+    <section class="product-image-wrapper">
+      <img
+        [ngSrc]="product.public_images[0]?.large || product.large_img || 'assets/images/default-image.png'"
+        [alt]="product.title"
+        class="product-image"
+        height="400"
+        width="600"
+        priority="low">
+    </section>
+    <section class="product-information">
+      <div class="product-title-wrapper">
+        @if (product.manufacturer_name) {
+          <p class="product-brand">{{ product.manufacturer_name }}</p>
+        }
+        <h1 class="product-title">{{ product.title }}</h1>
+        @if (product.serial) {
+          <p class="serial-number">Serial number: {{ product.serial }}</p>
+        }
+      </div>
+      <p class="product-description">{{ product.description }}</p>
+    </section>
+    @if (product.stolen && product.stolen_record) {
+      <section class="product-additional-information">
+        <h2>Additional theft information:</h2>
+        @if (product.stolen_record.date_stolen) {
+          <p>Date: {{ product.stolen_record.date_stolen|date }}</p>
+        }
+        @if (product.stolen_record.location) {
+          <p>Location: {{ product.stolen_record.location }}</p>
+        }
+      </section>
+    }
+  </div>
+}

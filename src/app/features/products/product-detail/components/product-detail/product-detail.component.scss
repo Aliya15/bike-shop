@@ -1,0 +1,47 @@
+@use 'breakpoints';
+@use 'colors';
+
+.product-wrapper {
+
+  @media only screen and (min-width: breakpoints.$layout-breakpoint-desktop) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    "image information"
+    "additional-information .";
+    gap: 30px;
+  }
+
+  .product-image {
+    grid-area: image;
+  }
+
+  .product-image {
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .product-information {
+    grid-area: information;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .serial-number {
+    font-size: 13px;
+    color: colors.$color-grey;
+  }
+
+  .product-brand {
+    font-size: 14px;
+  }
+
+  .product-additional-information {
+    grid-area: additional-information;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

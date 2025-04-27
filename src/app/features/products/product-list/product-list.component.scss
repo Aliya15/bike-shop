@@ -1,0 +1,23 @@
+@use 'breakpoints';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.product-list:not(:has(.no-data-text)) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+
+  @media only screen and (min-width: breakpoints.$layout-breakpoint-desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.no-data-text,
+.loading {
+  font-size: 20px;
+  text-align: center;
+}

@@ -1,0 +1,13 @@
+<form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <input (keyup)="onChange()"
+         aria-label="Search bar"
+         class="search-bar"
+         placeholder="Search"
+         type="text"
+         formControlName="searchQuery">
+  <button class="search-button" type="submit">
+    <img ngSrc="assets/images/search.png" alt="Swapfiets Logo" height="24"
+         width="24"
+         priority="high">
+  </button>
+</form>

@@ -1,21 +1,22 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {Bike} from '../models/product.model';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   standalone: true,
   name: 'filter',
 })
 export class FilterPipe implements PipeTransform {
-
-  transform(bikeList: Bike[], query: string | undefined | null, param = 'id'): Bike[] {
-    if (!bikeList.length || !query) {
-      return bikeList;
+  transform<T extends Record<string, unknown>>(
+    list: T[],
+    query: string | undefined | null,
+    param: keyof T
+  ): T[] {
+    if (!list.length || !query) {
+      return list;
     }
 
-    return bikeList.filter(bike => {
-      const bikeParam = bike[param]?.toString();
-      return bikeParam?.toLowerCase().startsWith(query.toLowerCase());
+    return list.filter(listItem => {
+      const itemParam = listItem[param]?.toString();
+      return itemParam?.toLowerCase().startsWith(query.toLowerCase());
     });
   }
-
 }

@@ -1,11 +1,14 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {ProductTileComponent} from '../../../shared/components/product-tile/product-tile.component';
-import {Bike} from '../../../shared/models/product.model';
-import {ProductService} from './services/product.service';
-import {SearchComponent} from '../../../shared/components/search/search.component';
-import {Observable} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
-import {FilterPipe} from '../../../shared/pipes/filter.pipe';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
+import { ProductTileComponent } from '../../../shared/components/product-tile/product-tile.component';
+import { ProductService } from './services/product.service';
+import { SearchComponent } from '../../../shared/components/search/search.component';
+import { AsyncPipe } from '@angular/common';
+import { FilterPipe } from '../../../shared/pipes/filter.pipe';
 
 @Component({
   selector: 'app-product-list',
@@ -13,17 +16,14 @@ import {FilterPipe} from '../../../shared/pipes/filter.pipe';
   imports: [ProductTileComponent, SearchComponent, AsyncPipe, FilterPipe],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductListComponent implements OnInit {
-  private productService: ProductService = inject(ProductService);
-  productList$?: Observable<Bike[] | undefined>;
-  query: string | undefined | null = '';
+export class ProductListComponent {
+  private readonly productService = inject(ProductService);
+  readonly productList$ = this.productService.getBikeList();
+  readonly query = signal<string>('');
 
-  ngOnInit() {
-    this.productList$ = this.productService.getBikeList();
-  }
-
-  filterBikes(query: string | undefined | null): void {
-    this.query = query;
+  filterBikes(query: string): void {
+    this.query.set(query);
   }
 }

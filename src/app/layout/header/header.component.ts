@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +8,6 @@ import {RouterLink} from '@angular/router';
   imports: [NgOptimizedImage, RouterLink],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
-}
+export class HeaderComponent {}

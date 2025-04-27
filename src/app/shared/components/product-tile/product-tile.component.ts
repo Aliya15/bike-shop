@@ -1,22 +1,26 @@
-import {Component, inject, input} from '@angular/core';
-import {Bike} from '../../models/product.model';
-import {NgOptimizedImage} from '@angular/common';
-import {Router} from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
+import { Bike } from '../../models/product.model';
+import { NgOptimizedImage } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-tile',
   standalone: true,
   templateUrl: './product-tile.component.html',
   styleUrls: ['./product-tile.component.scss'],
-  imports: [
-    NgOptimizedImage,
-  ],
+  imports: [NgOptimizedImage],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductTileComponent {
-  product = input<Bike>();
-  router = inject(Router)
+  private readonly router = inject(Router);
+  readonly product = input<Bike>();
 
-  openPLP() {
+  openPLP(): void {
     this.router.navigate(['/list', this.product()?.id]);
   }
 }

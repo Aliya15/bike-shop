@@ -2,7 +2,7 @@
 
 @if (productList$ | async; as productList) {
   <div class="product-list">
-    @for (product of productList | filter : query :'stolen_location'; track product.id) {
+    @for (product of productList | filter : query() :'stolen_location'; track product.id) {
       <app-product-tile [product]="product"></app-product-tile>
     } @empty {
       <p class="no-data-text">No data found</p>

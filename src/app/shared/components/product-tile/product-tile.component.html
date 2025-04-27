@@ -1,16 +1,15 @@
-@if (product()) {
-  <section tabindex="0" class="product-tile" (keydown.enter)="openPLP()" (click)="openPLP()">
-    <img [ngSrc]="product()?.thumb || 'assets/images/default-image.png'"
-         [alt]="product()?.title"
-         class="product-tile-image"
-         height="200"
-         width="300">
-    <h3 class="product-tile-title">{{ product()?.title }}</h3>
-    @if (product()?.description) {
-      <p class="product-tile-description">{{ product()?.description }}</p>
-    }
-    @if (product()?.stolen_location) {
-      <p class="product-tile-location">{{ product()?.stolen_location }}</p>
-    }
-  </section>
-}
+<section tabindex="0" class="product-tile" (keydown.enter)="openPLP()" (click)="openPLP()">
+  <img [ngSrc]="product().thumb || 'assets/images/default-image.png'"
+       [alt]="product().title"
+       class="product-tile-image"
+       height="300"
+       width="300"
+       loading="lazy">
+  <h3 class="product-tile-title">{{ product().title }}</h3>
+  @if (product().description) {
+    <p class="product-tile-description">{{ product().description }}</p>
+  }
+  @if (product().stolen_location) {
+    <p class="product-tile-location">{{ product().stolen_location }}</p>
+  }
+</section>

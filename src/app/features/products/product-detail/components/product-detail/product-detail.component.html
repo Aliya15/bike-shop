@@ -2,12 +2,13 @@
   <div class="product-wrapper">
     <section class="product-image-wrapper">
       <img
-        [ngSrc]="product.public_images[0]?.large || product.large_img || 'assets/images/default-image.png'"
+        [ngSrc]="product.large_img || 'assets/images/default-image.png'"
         [alt]="product.title"
         class="product-image"
         height="400"
         width="600"
-        priority="low">
+        priority
+        loading="lazy">
     </section>
     <section class="product-information">
       <div class="product-title-wrapper">
@@ -33,4 +34,6 @@
       </section>
     }
   </div>
+} @else {
+  <p>Loading...</p>
 }

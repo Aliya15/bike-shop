@@ -18,9 +18,9 @@ import { Router } from '@angular/router';
 })
 export class ProductTileComponent {
   private readonly router = inject(Router);
-  readonly product = input<Bike>();
+  readonly product = input.required<Bike>();
 
   openPLP(): void {
-    this.router.navigate(['/list', this.product()?.id]);
+    this.router.navigate(['/list', this.product().id]);
   }
 }

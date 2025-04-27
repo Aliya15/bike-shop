@@ -54,15 +54,15 @@ Product List Page (ProductListComponent);
 Product Detail Page (ProductDetailComponent);
 Every page has a subset of components that are solving particular business problem, relevant only for those pages/modules.
 
-### layout directory
+### /layout directory
 
 A very basic header and footer have been added to the layout directory, as it could be re-used in many different pages/modules. As the header/footer might have some business logic in the future, thus it is not a "dumb" component, therefore I decided to not have it under shared directory.
 
-### features directory
+### /features directory
 
 All application modules are added here.
 
-### shared directory
+### /shared directory
 
 The shared folder includes the following reusable components:
 
